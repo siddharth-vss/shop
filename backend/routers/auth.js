@@ -43,7 +43,44 @@ router.post('/singup',[
 })
 
 // ROUTE 2: Authenticate a User using: POST "/api/auth/login". No login required
+router.post('/login', [
+  body('email', 'Enter a valid email').isEmail(),
+  body('password', 'Password cannot be blank').isLength({min : 1}),
+], async (req, res) => {
+  let success = false;
+  // If there are errors, return Bad request and the errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
 
+  const { email, password } = req.body;
+  console.log(email);
+  try {
+    let user = await worker.findOne({ email });
+    if (!user) {
+      success = false
+      return res.status(400).json({ error: "Please try to login with correct credentials" });
+    }
+
+    if(password === user.password){
+      success=true
+      
+      res.json(success)
+    }
+    else {
+      success = false
+      return res.status(400).json({ success, error: "Please try to login with correct credentials" });
+    }
+ 
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+
+});
 
 
 /// creating bill at

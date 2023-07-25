@@ -1,0 +1,126 @@
+#SP{
+    /* width: 35px;
+    height: 35px;
+    */ border-radius: 50%; 
+    width: 100px;
+    height: 100px;
+}
+body{
+    background-color: #f2f3f5;
+}
+.app {
+    margin: 30px auto 50px;
+    width: 700px;
+}
+.invoice-wrapper {
+    position: relative;
+    background: #fff;
+    padding: 40px 35px;
+    box-shadow: 0 0 17px 0 rgba(16,40,73,.09);
+}
+
+
+
+
+.input, .select, .span {
+    display: inline-block;
+    width: 98%;
+    padding: 4px 12px 4px 0;
+    margin-bottom: 1px;
+    border: 1px dotted transparent;
+    transition: background .1s ease-in-out,border-color .2s ease-in-out;
+}
+.io{
+    
+    margin-bottom: 7px;
+   
+}
+input, select, textarea {
+    font-family: Nunito,sans-serif;
+    font-size: 14px;
+    color: #555;
+    background: transparent;
+    border-radius: 3px;
+    outline: 0;
+    font-weight: 500;
+    font-family: 'Varela Round', sans-serif;
+}
+textarea:hover {
+    cursor: pointer;
+   
+    background-color: #fdf4db;
+}
+select:hover {
+    cursor: pointer;
+    
+    background-color: #fdf4db;
+}
+input:hover {
+    cursor: pointer;
+   
+    background-color: #fdf4db;
+}
+.item{
+    background-color: #666;
+    color: #fff;
+}
+li{
+ list-style-type: none;
+}
+
+.d2,.d1{
+    width: 50%;
+}
+.dd1,.dd2{
+    width: 50%;
+   
+}
+
+
+.invoiceheader{
+    font-size: 45px;
+}
+.invoice{
+ 
+ color: #555;
+ font-weight: 600;
+ font-family: 'Varela Round', sans-serif;
+}
+
+
+.st{
+   width: 48%; 
+   height: 33px;
+   font-weight: 600;
+}
+.nd{
+ width: 17%;
+ height: 33px;
+ font-weight: 600;
+}
+.rd{
+  width: 17%;
+  height: 33px;
+  font-weight: 600;
+}
+.th{
+width: 18%;
+height: 33px;
+font-weight: 600;
+}
+.bg{
+    background-color: azure;
+}
+.p{
+    padding: 5px;
+}
+
+.bgtot{
+    background-color: #e3e3e3;
+}
+.tot{
+    font-family: 'Varela Round', sans-serif;
+    color: #555;
+    text-align: center;
+    font-weight: 600;
+}
