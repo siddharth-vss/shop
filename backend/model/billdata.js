@@ -32,6 +32,18 @@ let logIn = mongoose.Schema({
         type: String,
         required: true
     },
+    invoice: {
+        type: String,
+        required: true
+    },
+    biller: {
+        type: String,
+        required: true
+    },
+    Payment: {
+        type: String,
+        required: true
+    },
     Item: {
         type: Array,
         required: true

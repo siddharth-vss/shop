@@ -5,6 +5,7 @@ function Bill() {
 
   
   const [name, setName] = useState('');
+  // const [biller, setBiller] = useState('');
   const [mobile_number, setMobile_number] = useState('');
   const [address, setAddress] = useState('');
   const [City, setCity] = useState('');
@@ -18,6 +19,7 @@ function Bill() {
   // const [Total, setTotal] = useState('');
 
    const sName               =(e)=>{setName         (e.target.value);};
+  //  const sbiller               =(e)=>{setBiller         (e.target.value);};
    const sMobile_number      =(e)=>{setMobile_number(e.target.value);};
    const sAddress            =(e)=>{setAddress      (e.target.value);};
    const sCity               =(e)=>{setCity         (e.target.value);};

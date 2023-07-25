@@ -121,6 +121,9 @@ router.post('/bill',[
         Item : req.body.Item,
         quantity : req.body.quantity,
         Price : req.body.Price,
+        invoice : req.body.invoice,
+        Payment : req.body.Payment,
+        biller:req.body.biller
         
         });
         res.json({ data })
