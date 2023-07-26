@@ -5,6 +5,12 @@
     width: 100px;
     height: 100px;
 }
+#SPlogo{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; 
+   
+}
 body{
     background-color: #f2f3f5;
 }

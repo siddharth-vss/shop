@@ -3,8 +3,9 @@ let router =express.Router();
 const { body, validationResult } = require('express-validator');
 let journal = require('../model/journal');
 let item = require('../model/item');
-
 // add items at 
+
+
 router.post('/stocks',[
 
     body('Item', 'Enter a Item').isLength({ min: 3 }),

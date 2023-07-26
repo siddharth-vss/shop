@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../App.css'
-import logo from '../logo.jpg'
-function Bill() {
+import'../logo.jpg'
 
+
+const Bill = () => {
 
   const States = [
     { name: "Andhra Pradesh", value: "Andhra Pradesh" },
@@ -35,168 +36,120 @@ function Bill() {
     { name: "West Bengal", value: "West Bengal" }
   ]
 
+ const[form,setForm]= useState({})
+ const[stock,setStock]= useState([])
 
-  const [name, setName] = useState('');
-  // const [biller, setBiller] = useState('');
-  const [mobile_number, setMobile_number] = useState('');
-  const [address, setAddress] = useState('');
-  const [City, setCity] = useState('');
-  // const [State, setState] = useState('');
-  const [Zip, setZip] = useState('');
-  const [Item, setItem] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [Price, setPrice] = useState('');
-  const [invoice, setInvoice] = useState('');
-  const [Payment, setPayment] = useState('');
-  // const [Total, setTotal] = useState('');
+  const hendeler = (e) =>{
+     console.log(e.target.name,e.target.value);
+     setForm({...form,[e.target.name]: e.target.value})
 
-  const sName = (e) => { setName(e.target.value); };
-  //  const sbiller               =(e)=>{setBiller         (e.target.value);};
-  const sMobile_number = (e) => { setMobile_number(e.target.value); };
-  const sAddress = (e) => { setAddress(e.target.value); };
-  const sCity = (e) => { setCity(e.target.value); };
-  //  const sState              =(e)=>{setState        (e.target.value);};
-  const sZip = (e) => { setZip(e.target.value); };
-  const sItem = (e) => { setItem(e.target.value); };
-  const sQuantity = (e) => { setQuantity(e.target.value); };
-  const sPrice = (e) => { setPrice(e.target.value); };
-  const sInvoice = (e) => { setInvoice(e.target.value); };
-  const sPayment = (e) => { setPayment(e.target.value); };
-  //  const sTotal =(e)=>{setTotal()}
-
-
-
+  }
+  
+  const FormHandeler =async (e) =>{
+    e.preventDefault();
+    const response = await fetch('http://localhost:5000/bill',{
+      method:'POST',
+      body : JSON.stringify(form),
+      headers:{
+        'Content-Type':'application/json'
+    }})
+    const data = await response.json();
+    console.log(data);
+  }
+  const itemseter =async () =>{
+    
+    const response = await fetch('http://localhost:5000',{
+      method:'Get'
+    })
+    const Stock = await response.json();
+    setStock(Stock);
+    console.log(Stock);
+  }
+  useEffect( ()=>{
+    itemseter();
+    console.log(stock);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   return (
     <>
-      <div className="app">
-        <h1 className="tot invoice">
-          Invoice Generator
-        </h1>
-        <div className="invoice-wrapper">
-          <div className="d-flex justify-content-around">
-            <div className="d1">
-              <img src={logo} alt="logo" id='SP' />
-              <div className=" my-3 ">
+    <form onSubmit={FormHandeler} className="row g-3 bg-light rounded-2 p-auto m-auto ">
+  <div className="col-md-6">
+    <input  onChange={hendeler} type="hidden" name="where?" value="shop sms"/>
+    <label htmlFor="inputEmail4" className="form-label">Customer name</label>
+    <input  onChange={hendeler} type="text" className="form-control" id="inputEmail4" name="name" required/>
+  </div>
+  <div className="col-md-6">
+    <label htmlFor="inputPassword4" className="form-label">mobile number</label>
+    <input  onChange={hendeler} type="number" className="form-control" id="inputPassword4" name="mobile_number"/>
+  </div>
+  <div className="col-12">
+    <label htmlFor="inputAddress" className="form-label">Address</label>
+    <input  onChange={hendeler} type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" name="address"/>
+  </div>
 
-                <p className="input "  >ABC </p>
-                <p className="input "  >XYZ </p>
-                <p className="input "  >XYZ </p>
-                <p className="input "  >XYZ </p>
-
-              </div>
-            </div>
-            <div className="d2">
-              <p className="input  invoice invoiceheader text-end"   >INVOICE</p>
-            </div>
-
-          </div>
-          <div className="d-flex justify-content-around my-3 ">
-            <div className="d1">
-
-
-
-              <p className='invoice'>Bill To:</p>
-              <input type="text" className="input " name={name} onChange={sName} placeholder="Your Company" />
-              <input type="number" className="input " name={mobile_number} onChange={sMobile_number} placeholder="Your Name" />
-              <input type="text" className="input " name={address} onChange={sAddress} placeholder="Company's Address" />
-              <input type="text" className="input " name={City} onChange={sCity} placeholder="City, State Zip" />
-              {/* <input type="text" className="input " name={State} onChange={sState} placeholder="City, State Zip" /> */}
-              <select className='select'>{States.map((e) => {
-                return <option value={e.value}>{e.name}</option>
+  <div className="col-md-6">
+    <label htmlFor="inputCity" className="form-label">City</label>
+    <input  onChange={hendeler} type="text" className="form-control" id="inputCity" name="City" required/>
+  </div>
+  <div className="col-md-4">
+    <label htmlFor="inputState" className="form-label">State</label>
+    
+    <select  className="form-select select" name="State" onChange={hendeler} >
+        <option selected>select states</option>{States.map((e,index) => {
+                return <option defaultValue={e.value} key={index}>{e.name}</option>
               })}</select>
-            </div>
-            <div className="d2 d-flex">
-              <div className="dd1">
-                <p className="invoice">Invoice#:</p>
-                <p className="invoice">Invoice Date:</p>
-                <p className="invoice">ZIP Code:</p>
-                <p className="invoice">Payment-method:</p>
-              </div>
-              <div className="dd2">
-                <input type="text" name={invoice} className="input io" onChange={sInvoice} />
-                <input type="date" name="date" className="input io" />
-                <input type="number" name={Zip} className="input io" onChange={sZip} />
-                <input type="text" name={Payment} className="input io" onChange={sPayment} />
+   
+  </div>
+  <div className="col-md-2">
+    <label htmlFor="inputZip" className="form-label">Zip</label>
+    <input  onChange={hendeler} type="text" className="form-control" id="inputZip" name="Zip" required/>
+  </div>
+  
+    <div className="row">
+    <div className="col-md-6">
+      <label htmlFor="inputEmail4" className="form-label">Item</label>
+      <select  className="form-select select" name="Item" onChange={hendeler} >
+        <option selected>select Item</option>{stock.map((e) => {
+                return <option defaultValue={e.Item} >{e.Item}</option>
+              })}
+        </select>
+</div>
+<div className="col-md-3">
+     <label htmlFor="inputPassword4" className="form-label">quantity</label>
+     <input  onChange={hendeler} type="number" className="form-control" id="inputPassword4"  name="quantity"/>
+</div>
+<div className="col-md-3">
+     <label htmlFor="inputPassword4" className="form-label">Price</label>
+     <input  onChange={hendeler} type="number" className="form-control" id="inputPassword4"  name="Price"/>
+</div>
+</div>
 
-              </div>
-
-            </div>
-
-          </div>
-          <div className="item d-flex ">
-
-            <div className="st "> Item Description </div>
-            <div className="nd ">Qty</div>
-            <div className="rd ">Rate</div>
-            <div className="th ">Amount</div>
-
-
-
-
-          </div>
-          <div className="bg border-bottom d-flex ">
-
-            <input type='text' className="st input border-end" name={Item} onChange={sItem} />
-            <input type='number' className="nd input border-end" name={quantity} onChange={sQuantity} />
-            <input type='number' className="rd input border-end" name={Price} onChange={sPrice} />
-            <p type='text' className="th input" name="Total"  > <span></span> </p>
+    <div id="bill" className="row">
+   </div>
 
 
+  <button type="button" className="btn btn-success" id="add">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus"
+      viewBox="0 0 16 16">
+      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+      </path>
+    </svg>
+    Add more Item
+  </button>
 
-          </div>
-          <div className="bg border-bottom d-flex ">
-
-            <input type='text' className="st input border-end" name={Item} onChange={sItem} />
-            <input type='number' className="nd input border-end" name={quantity} onChange={sQuantity} />
-            <input type='number' className="rd input border-end" name={Price} onChange={sPrice} />
-            <p type='text' className="th input" name="Total"  > <span></span> </p>
-
-
-
-          </div>
-          <div className="bg border-bottom d-flex ">
-
-            <input type='text' className="st input border-end" name={Item} onChange={sItem} />
-            <input type='number' className="nd input border-end" name={quantity} onChange={sQuantity} />
-            <input type='number' className="rd input border-end" name={Price} onChange={sPrice} />
-            <p type='text' className="th input" name="Total"  > <span></span> </p>
+  <div className="col-12">
+    <button type="submit" className="btn btn-primary">Submit</button>
+  </div>
+  <div className="col-md-12"></div>
 
 
-
-          </div>
-          <div className="my-5 d-flex ">
-
-            <div className="dd1">
-
-            </div>
-            <div className="dd2">
-              <div className="d-flex">
-                <div className="view w-50 p">
-                  <input type="text" className="input " placeholder="" value="Sub Total" /></div>
-                <div className="view w-50 p"><span className="span right bold dark tot input">200.00</span></div>
-              </div>
-              <div className="d-flex">
-                <div className="view w-50 p">
-                  <input type="text" className="input " placeholder="" value="Sale Tax (10%)" /></div>
-                <div className="view w-50 p"><span className="span right bold dark tot input">20.00</span></div>
-              </div>
-              <div className="d-flex bg-gray p">
-                <div className="view w-50 bgtot p">
-                  <p className="input bold" >TOTAL</p></div>
-                <div className="view w-50 p d-flex bgtot">
-
-                  <span className="span right bold dark tot input">220.00</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+</form>
+   
+    
 
     </>
-  );
+  )
 }
 
-export default Bill;
+export default Bill

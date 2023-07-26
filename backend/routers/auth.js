@@ -1,9 +1,12 @@
 let express = require('express');
+let bodyParser =require('body-parser');
 let router =express.Router();
 let worker = require('../model/singup');
 let bill = require('../model/billdata');
 const { body, validationResult } = require('express-validator');
-
+let cors = require('cors');
+router.use(cors());
+router.use(bodyParser.json());
 
 /// creating user at
 router.post('/singup',[
@@ -87,15 +90,15 @@ router.post('/login', [
 
 router.post('/bill',[
 
-  body('name','').isLength({min : 5}), 
-  body('mobile_number','').isLength({min : 10}), 
-  body('address','').isLength({min :30}), 
-  body('City','').isLength({min :5}), 
-  body('State','').isLength({min :5}), 
-  body('Zip','').isLength({min :6}), 
-  body('Item','').isLength({min :1}), 
-  body('quantity','').isLength({min :1}), 
-  body('Price','').isLength({min :1}), 
+  body('name','Enter valid Name').isLength({min : 5}), 
+  body('mobile_number','Enter valid Numbers').isLength({min : 10}), 
+  // body('address','').isLength({min :30}), 
+  body('City','Enter valid City').isLength({min :5}), 
+  // body('State','').isLength({min :5}), 
+  body('Zip','Enter valid Zipcode').isLength({min :6}), 
+  // body('Item','Enter valid item ').isLength({min :1}), 
+  body('quantity','Enter valid Quantity ').isLength({min :1}), 
+  // body('Price','').isLength({min :1}), 
   
 ],async(req,res)=>{
 
@@ -107,11 +110,8 @@ router.post('/bill',[
   }
 
   try{
-      let data = await worker.findOne({ email: req.body.email });
-      if (data) {
-        return res.status(400).json({ error: "Sorry a user with this email already exists" })
-      }
-      data = await bill.create({
+      
+      const  data = await bill.create({
         name : req.body.name,
         mobile_number : req.body.mobile_number,
         address : req.body.address,
@@ -126,7 +126,8 @@ router.post('/bill',[
         biller:req.body.biller
         
         });
-        res.json({ data })
+        console.log(data);
+        res.json({data})
   }
   catch (error) {
       console.error(error.message);

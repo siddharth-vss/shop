@@ -1,7 +1,9 @@
 
 import './App.css';
+import Bill from './component/bill';
+import Navbar from './component/navbar';
+// import Invoice from './component/invoice';
 
-import Document from './component/document';
 
 
 // import Navbar from './component/navbar';
@@ -9,7 +11,10 @@ import Document from './component/document';
 function App() {
   return (
     <>
-    <Document/>
+    <Navbar/>
+    <br/><br/>
+    <Bill/>
+    {/* <Invoice/> */}
       
        
     </>

@@ -7,7 +7,7 @@ const Navbar = () => {
    <>
    <nav className="navbar navbar-dark bg-dark fixed-top">
         <div className="container-fluid">
-            <img src={logo} alt="sp" id="SP"/>
+            <img src={logo} alt="sp" id="SPlogo"/>
             <a className="navbar-brand" href="/">SHOP</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
