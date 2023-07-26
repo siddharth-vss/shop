@@ -35,7 +35,7 @@ body{
     margin-bottom: 7px;
    
 }
-input, select, textarea {
+input,select,textarea {
     font-family: Nunito,sans-serif;
     font-size: 14px;
     color: #555;
@@ -53,7 +53,7 @@ textarea:hover {
 select:hover {
     cursor: pointer;
     
-    background-color: #fdf4db;
+    background-color: #dbfbfd;
 }
 input:hover {
     cursor: pointer;
@@ -66,6 +66,14 @@ input:hover {
 }
 li{
  list-style-type: none;
+}
+option{
+    cursor: pointer;
+    background-color: #dbfbfd;
+}
+option:hover {
+    cursor: pointer;
+    background-color: #dbfbfd;
 }
 
 .d2,.d1{
