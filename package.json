@@ -14,8 +14,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "restart": "concurrently \"npm run start\" \"nodemon backend/server.js\"",
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run restart\" \"nodemon backend/server.js\"",
+    "restart": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

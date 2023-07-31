@@ -3,6 +3,10 @@ let router =express.Router();
 const { body, validationResult } = require('express-validator');
 let journal = require('../model/journal');
 let item = require('../model/item');
+let bodyParser =require('body-parser');
+let cors = require('cors');
+router.use(cors());
+router.use(bodyParser.json());
 // add items at 
 
 
@@ -39,37 +43,36 @@ router.post('/stocks',[
 
 // add journal  at 
 
-router.post('/jouranls',[
+router.post('/journals',[
 
     body('Title', 'Enter a valid Title').isLength({ min: 3 }),
-    body('Textarea', 'Enter a valid Text').isLength({ min: 10 }),
+    body('Textarea', 'Enter a valid Text & cheak length min 10').isLength({ min: 10 }),
   ],async(req,res)=>{
 
-    console.log(req.body.name);
+    console.log(req.body.Title);
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    try{
-        let notes = await journal.findOne({ email: req.body.email });
-        if (notes) {
-          return res.status(400).json({ error: "Sorry a user with this email already exists" })
-        }
-        notes = await journal.create({
+    
+        
+        const notes = await journal.create({
             Title : req.body.Title,
             Textarea : req.body.Textarea,
           });
           res.json({ notes })
-    }
-    catch (error) {
-        console.error(error.message);
-        res.status(500).send("Internal Server Error");
-      }
-
+  
 
 })
-
+router.get('/item',async (req,res)=>{
+  let items = await item.find({});
+   res.send(items)
+})
+router.get('/journal',async (req,res)=>{
+  let journals = await journal.find({});
+   res.send(journals)
+})
 
 module.exports =router

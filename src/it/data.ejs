@@ -1,0 +1,96 @@
+<%- include('common/head.ejs', { title: 'database' }) %>
+<%- include('common/navbardb.ejs') %>
+
+<%if (records.length >0){ %>
+  <% records.forEach(function(row){ %>
+    DATE :<%= row.date %>  
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= row.mobile_number %>" aria-expanded="false" aria-controls="<%= row.mobile_number %>">
+              <%= row.name %>       
+          </h2>
+          <div id="<%= row.mobile_number %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <table class="table table-striped "> <!--////////======== make blue table to add class `table-primary` -->
+                <thead>
+                  <tr>
+                    
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  
+                  
+                    <% if (row.Item.length >1) { %>
+                      <tr>
+                        
+                        <td><%= row.Item[0] %></td>
+                        <td><%= row.quantity[0] %></td>
+                        <td>₹<%= row.quantity[0] * row.Price[0] %></td>
+                       
+                        
+                      </tr>
+                      <% for( let i = 1; i < row.Item.length ; i++ ) { %>
+                      
+                      
+                      <tr>
+                       
+                        <td><%= row.Item[i] %></td>
+                        <td><%= row.quantity[i] %></td>
+                        <td>₹<%= row.quantity[i] * row.Price[i] %></td>
+                      </tr>
+                      <% } %>
+                      <tr class="col-12">
+                       
+                        <a href="/invoice"  class="btn btn-primary">Print or downlod invoice</a>
+                      
+                    </tr>
+                     </tbody>
+                  </table>
+                  MOBILE NO:<%= row.mobile_number %>
+            
+                      <% }else{ %>
+                       
+                      <tr>
+                        
+                        <td><%= row.Item %></td>
+                        <td><%= row.quantity %></td>
+                         <td>₹<%= row.quantity[0] * row.Price[0] %></td>
+                      </tr>
+                      <tr class="col-12">
+                        MOBILE NO:<%= row.mobile_number %>
+                       
+                          <a href="/invoice" class="btn btn-primary">Print or downlod invoice</a>
+                        
+                      </tr>
+                     </tbody>
+                  </table>
+                    <% } %>
+            
+               
+              </div>
+          </div>
+        </div>
+  </div>
+  <% })}else{ %>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal incen"><b>No Record Found</b></h4>
+        </div>
+        <div class="card-body">
+        
+          </div>
+      </div>
+    </div>
+    <% } %>
+    <button class="btn btn-light " onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+    
+  
+</body>
+</html>

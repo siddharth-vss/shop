@@ -1,11 +1,110 @@
-body {
-  margin: 0;
-  background-color: #f2f3f5;
+#SPlog{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+
+  clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 56% 88%, 75% 100%, 56% 88%, 0 88%);
+ 
+}
+.error{
+   width: 100vw;
+ height: 91.5vh;
+ /* top: -100px !important; */
+background-color: rgb(0, 183, 255);
+}
+.h1{
+  color: rgb(255, 255, 255);
+  font-size: 200px;
+}
+.h3{
+  color: rgb(255, 255, 255);
+  font-size: 65px;
+}
+.p{
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
+form{
+  margin-top: 10%;
+}
+.form-floating {
+  position: relative;
+  margin-left: 15% !important;
+  margin-right: 15% !important;
+}
+.ftext{
+  text-decoration: none;
+
+}
+.w3-text-grey, .w3-hover-text-grey:hover, .w3-text-gray, .w3-hover-text-gray:hover {
+  color: #757575!important;
+}
+.w3-padding-64 {
+  padding-top: 64px!important;
+  padding-bottom: 64px!important;
+}
+.w3-content {
+  max-width: 980px;
+}
+.w3-content, .w3-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.w3-text-light-grey, .w3-hover-text-light-grey:hover, .w3-text-light-gray, .w3-hover-text-light-gray:hover {
+  color: #f1f1f1!important;
+}
+.w3-opacity, .w3-hover-opacity:hover {
+  opacity: 0.60;
+}
+.w3-section, .w3-code {
+  margin-top: 16px!important;
+  margin-bottom: 16px!important;
+}
+.fa-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.w3-text-white, .w3-hover-text-white:hover {
+  color: #fff!important;
+}
+.w3-margin-right {
+  margin-right: 16px!important;
+}
+.w3-xxlarge {
+  font-size: 36px!important;
+}
+.w3-padding-16 {
+  padding-top: 16px!important;
+  padding-bottom: 16px!important;
+}
+.w3-input {
+  padding: 8px;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+button, input {
+  overflow: visible;
+  background-color: #fff;
+  color: #757575;
+}
+button, input, select, textarea, optgroup {
+  font: inherit;
+  margin: 0;
+}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.body{
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
 }

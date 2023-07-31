@@ -26,13 +26,13 @@ let logIn = mongoose.Schema({
     },
     State: {
         type: String,
-        // required: true
+        required: true
     },
-    // invoice: {
-    //     type: String,
-    //     required: true
-    // },
     Zip: {
+        type: String,
+        required: true
+    },
+    billern: {
         type: String,
         required: true
     },
