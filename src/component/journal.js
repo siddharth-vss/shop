@@ -51,7 +51,7 @@ const Journal = (props) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar showAlert={props.showAlert}/>
       <br /><br />
    
       {journal.map((journal, index) => {

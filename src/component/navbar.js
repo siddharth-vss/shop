@@ -3,11 +3,12 @@ import logo from '../logo.jpg'
 import '../App.css'
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (props) => {
     const nevigation =useNavigate();
 
   const logout = async () => {
       nevigation("/");
+      props.showAlert("Loged out Successfully", "success");
   }
     
   return (

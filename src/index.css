@@ -12,15 +12,24 @@
  /* top: -100px !important; */
 background-color: rgb(0, 183, 255);
 }
-.h1{
+.nav{
+  padding: 64px;
+display: flex;
+justify-content: space-around;
+}
+.h1e{
   color: rgb(255, 255, 255);
   font-size: 200px;
 }
 .h3{
+  
+  font-size: 65px;
+}
+.h3e{
   color: rgb(255, 255, 255);
   font-size: 65px;
 }
-.p{
+.pe{
   color: rgb(255, 255, 255);
   font-size: 20px;
 }

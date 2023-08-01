@@ -54,7 +54,7 @@ const Stock = (props) => {
   return (
  <>
  
-<Navbar/>
+<Navbar showAlert={props.showAlert}/>
   <br/><br/>
     <br/><br/>
     

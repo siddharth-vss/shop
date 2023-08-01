@@ -100,7 +100,7 @@ const Bill = (props) => {
 
   return (
     <>
-    <Navbar/> <br/><br/>
+    <Navbar showAlert={props.showAlert}/> <br/><br/>
     <br/><br/>
       <div className="my-5" >
       <ul  className="select d-flex" name="Item" onChange={hendeler} >

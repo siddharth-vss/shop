@@ -3,7 +3,7 @@ import Navbar from './navbar'
 import Disable from './dts'
 
 
-const Data = () => {
+const Data = (props) => {
 
  const[data,setData]=useState([])
  const itemseter =async () =>{
@@ -22,7 +22,7 @@ const Data = () => {
   },[]); 
     return (
     <>
-    <Navbar/>
+    <Navbar showAlert={props.showAlert}/>
     <br/><br/>
     <br/><br/>
     {data.map((cus,index)=>{
