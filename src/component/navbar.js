@@ -8,7 +8,7 @@ const Navbar = (props) => {
 
   const logout = async () => {
       nevigation("/");
-      props.showAlert("Loged out Successfully", "success");
+      
   }
     
   return (
@@ -28,19 +28,19 @@ const Navbar = (props) => {
                 <div className="offcanvas-body">
                     <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/invoice">INVOICE</a>
-                        </li>
-                        <li className="nav-item">html
-                            <a className="nav-link" href="/journal">JOURNAL</a>
+                            <a className="nav-link" aria-current="page" href="/invoice"><i class="fa-solid fa-file-invoice" style={{color: "#ffffff"}}></i>&nbsp;INVOICE</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/bill">HOME</a>
+                            <a className="nav-link" href="/journal"><i class="fa-solid fa-book" style={{color: "#ffffff"}}></i>&nbsp;JOURNAL</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/stocks">STOCKS</a>
+                            <a className="nav-link" href="/bill"><i class="fa-solid fa-house" style={{color: "#ffffff"}}></i>&nbsp;HOME</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/contact">CONTACT-US</a>
+                            <a className="nav-link" href="/stocks"> <i class=" fa-solid fa-layer-group" style={{color: "#ffffff"}} ></i>&nbsp;STOCKS</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/contact"> <i class="fa-solid fa-envelope"style={{color: "#ffffff"}}></i>&nbsp;CONTACT-US</a>
                         </li>
                         
                     </ul>

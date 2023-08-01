@@ -66,6 +66,28 @@ router.post('/journals',[
   
 
 })
+router.delete('/deljournals/:id',async(req,res)=>{
+  try {
+    let note = await journal.findById(req.params.id);
+    console.log(note);
+    // if (!note) { return res.status(404).json("Not Found") }
+     
+    note = await journal.findByIdAndDelete(req.params.id)
+    res.json({ "Success": "Note has been deleted", note: note });
+
+    
+   } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+   }  
+        
+  
+
+})
+
+
+
+
 router.get('/item',async (req,res)=>{
   let items = await item.find({});
    res.send(items)

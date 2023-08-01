@@ -25,7 +25,8 @@ const Journal = (props) => {
     const data = await response.json();
     console.log(data);
     if(response.status===200){
-      props.showAlert("Note Created Successfully", "success");
+      props.showAlert("journal Created Successfully", "success");
+      setForm({});
    
     }else{
       props.showAlert("Enter Correct credintial", "danger");
@@ -35,13 +36,28 @@ const Journal = (props) => {
   }
 
   const itemseter = async () => {
-
     const response = await fetch('http://localhost:5000/staf/journal', {
       method: 'Get'
     })
     const journal = await response.json();
     setJournal(journal);
     console.log(journal);
+  }
+  const deleteNote = async (id) => {
+    const response = await fetch(`http://localhost:5000/staf/deljournals/${id}`, {
+    method: 'DELETE'
+    })
+    const json = await response.json();
+    console.log(json); 
+    if(response.status===200){
+      props.showAlert("Journal deleted Successfully", "success");
+   
+    }else{
+      props.showAlert("Journal didn't found", "danger");
+    }
+    await itemseter();
+
+    
   }
   useEffect(() => {
     itemseter();
@@ -60,9 +76,9 @@ const Journal = (props) => {
                   <div className='date'>{journal.date}</div>
                     <div className="col">
                       <div className="card mb-4 rounded-3 shadow-sm">
-                       <div className="card-header py-3 text-bg-warning" >
+                       <div className="card-header py-3 text-bg-warning d-flex justify-content-between" >
                          <h4 className="my-0 fw-normal incen"><b>{journal.Title}</b></h4>
-                         <i className=" fa-solid fa-xmark"></i>
+                         <i class="fa-solid fa-trash-can close " onClick={()=>deleteNote(journal._id)} style={{color:" #ff0000"}}></i>
                        </div>
                        <div className="card-body bgy">
                            {journal.Textarea}
