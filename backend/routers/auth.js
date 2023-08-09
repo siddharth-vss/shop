@@ -15,6 +15,7 @@ router.post('/singup',[
     body('name', 'Enter a valid name').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
    body('password', 'Password must be atleast 8 characters').isLength({ min: 8 }),
+   body('number', 'Enter the valid number').isLength({ min: 10 }).isNumeric({}),
 ],async(req,res)=>{
 
     console.log(req.body);
@@ -34,7 +35,7 @@ router.post('/singup',[
             password: req.body.password,
             email: req.body.email,
           });
-          res.json({ user })
+          res.json({ user });
     }
     catch (error) {
         console.error(error.message);
@@ -60,7 +61,9 @@ router.post('/singin', [
   console.log(email);
   try {
     let user = await worker.findOne({ email });
+    console.log(user);
     if (!user) {
+      console.log(user);
       success = false
       return res.status(400).json({ error: "Please try to login with correct credentials" });
     }

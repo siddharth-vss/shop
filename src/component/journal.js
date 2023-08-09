@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import {  useNavigate } from 'react-router-dom';
 import '../App.css'
 import Navbar from './navbar'
 const Journal = (props) => {
+
+  const navigate = useNavigate();
 
   const [journal, setJournal] = useState([])
   const [form, setForm] = useState({})
@@ -26,8 +29,7 @@ const Journal = (props) => {
     console.log(data);
     if(response.status===200){
       props.showAlert("journal Created Successfully", "success");
-      setForm({});
-   
+      navigate('/journal') ;
     }else{
       props.showAlert("Enter Correct credintial", "danger");
     }
@@ -69,6 +71,8 @@ const Journal = (props) => {
     <>
       <Navbar showAlert={props.showAlert}/>
       <br /><br />
+       <h1>{journal.length===0 && 'No Journal to display'}</h1>
+       <h1>{journal.length>0 && journal.length}</h1>
    
       {journal.map((journal, index) => {
 

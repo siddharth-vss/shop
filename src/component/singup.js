@@ -35,7 +35,7 @@ const Singup = (props) => {
     <div className='text-center mt-5'>
 
     <img src={logo} alt="logo" id='SPlog'  />
-    <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 className="h3 mb-3 fw-normal">Please create Account</h1>
     </div>
 
     <div className="form-floating ">
@@ -45,6 +45,10 @@ const Singup = (props) => {
     <div className="form-floating ">
       <input type="email"  onChange={hendeler} name='email' className="form-control input" id="floatingInput" placeholder="name@example.com"  />
       <label  className='input' htmlFor="floatingInput">Email address</label>
+    </div>
+    <div className="form-floating ">
+      <input type="text"  onChange={hendeler} name='number' className="form-control input" id="floatingInput" placeholder="name@example.com"  />
+      <label  className='input' htmlFor="floatingInput">Number</label>
     </div>
     <div className="form-floating">
       <input type="password" onChange={hendeler} name='password' className="form-control input" id="floatingPassword" placeholder="Password" />
