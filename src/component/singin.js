@@ -24,6 +24,7 @@ const Login = (props) => {
       if(response.status===200){
         props.showAlert("Loged in Successfully", "success");
       navigate("/bill");
+      
       }else{
         props.showAlert("Enter Correct credintial", "danger");
       }

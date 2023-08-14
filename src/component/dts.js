@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const Disable = (props) => {
     let [total,setTotal]= useState('');
-    let { id, name, number, address, City, State, Zip, biller, Payment, Item, quantity, Price, date } = props
+    let { id, name,Item, quantity, Price } = props
     
     for (let i = 0; i < Item.length; i++) {
         

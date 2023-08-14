@@ -72,7 +72,7 @@ router.post('/singin', [
       success=true
       
       console.log(user);
-      res.json(user)
+      res.json(user);
     }
     else {
       success = false
