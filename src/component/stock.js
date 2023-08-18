@@ -16,21 +16,9 @@ const Stock = (props) => {
     setForm({...form,[e.target.name]: e.target.value})
 
  }
- const[user,setUser]= useState([])
- const authUser = async () =>{
-     let response = await fetch('/users',{
-       method:'Get',
-       headers:{
-         Accept:"application/json",
-         "Content-Type":"application/json",
-       },
-       credentials:"include"
-      
-      })
 
-   const data = await response.json();
-   setUser(data);
- }
+
+ 
  
  const FormHandeler =async (e) =>{
    e.preventDefault();
@@ -61,7 +49,7 @@ const Stock = (props) => {
     setStock(Stock);
     console.log(Stock);
     if(response.status===200){
-      props.showAlert(`WELCOME ${user.name } `, "success");
+      props.showAlert(`WELCOME USER `, "success");
     }else{
       navigate("/singin");
       props.showAlert("Enter Correct credintial", "danger");
@@ -69,7 +57,7 @@ const Stock = (props) => {
   }
   useEffect( ()=>{
     itemseter();
-    authUser();
+    
     console.log(stock);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);

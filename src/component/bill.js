@@ -70,7 +70,7 @@ const Bill = (props) => {
     setUser(data);
     console.log(user)
     if(response.status===200){
-      props.showAlert(`WELCOME ${user.name} `, "success");
+      props.showAlert(`WELCOME USER `, "success");
     }else{
       navigate("/singin");
       props.showAlert("Enter Correct credintial", "danger");

@@ -18,7 +18,7 @@
     "start": "concurrently \"npm run restart\" \"nodemon backend/server.js\"",
     "restart": "react-scripts start",
     "build": "react-scripts build",
-    "test": "concurrently \"npm install\" \"backend/npm install\"",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
