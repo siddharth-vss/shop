@@ -2,8 +2,14 @@ import React, { useState } from 'react'
 import '../App.css'
 import logo from '../logo.jpg'
 function Invoice() {
-
-
+ 
+  const payment =[
+    {"id":1,"payment_type":"Credit Card"},
+    {"id":2,"payment_type":"Debit Card"},
+    {"id":3,"payment_type":"Net Banking"},
+    {"id":4,"payment_type":"Cash"},
+    {"id":5,"payment_type":"Other"}
+  ]
   const States = [
     { name: "Gujarat", value: "Gujarat" },
     { name: "Andhra Pradesh", value: "Andhra Pradesh" },
@@ -61,7 +67,7 @@ function Invoice() {
   const sQuantity = (e) => { setQuantity(e.target.value); };
   const sPrice = (e) => { setPrice(e.target.value); };
   const sInvoice = (e) => { setInvoice(e.target.value); };
-  const sPayment = (e) => { setPayment(e.target.value); };
+  const sPayment = (e) => { setPayment(e.target.value); console.log(Payment);};
   //  const sTotal =(e)=>{setTotal()}
 
 
@@ -69,17 +75,17 @@ function Invoice() {
 
   return (
     <>
-      <div className="app">
+      <div className="app" style={{top : "0px"}} >
         <div className="invoice-wrapper">
           <div className="d-flex justify-content-around">
             <div className="d1">
-              <img src={logo} alt="logo" id='SP' />
+              <img src={logo} alt="logo" id='tata' />
               <div className=" my-3 ">
 
-                <p className="input "  >ABC </p>
-                <p className="input "  >XYZ </p>
-                <p className="input "  >XYZ </p>
-                <p className="input "  >XYZ </p>
+                <p className="input "  >TATA MOTORS </p>
+                <p className="input "  >R.K. EMPIRE,</p>
+                <p className="input "  >MAVDI,360004</p>
+                <p className="input "  >RAJKOT</p>
 
               </div>
             </div>
@@ -112,9 +118,12 @@ function Invoice() {
               </div>
               <div className="dd2">
                 <input type="text" name={invoice} className="input io" onChange={sInvoice} />
-                <input type="date" name="date" className="input io" />
+                <input type="date" name="date" className="input io"  />
                 <input type="number" name={Zip} className="input io" onChange={sZip} />
-                <input type="text" name={Payment} className="input io" onChange={sPayment} />
+                <select  className="form-select select" name="Payment" onChange={sPayment} >
+        {payment.map((e,index) => {
+                return <option defaultValue={e.payment_type} key={index}>{e.payment_type}</option>
+              })}</select>
 
               </div>
 

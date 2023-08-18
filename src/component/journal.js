@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {  useNavigate } from 'react-router-dom';
 import '../App.css'
 import Navbar from './navbar'
+
 const Journal = (props) => {
 
   const navigate = useNavigate();
@@ -9,7 +10,21 @@ const Journal = (props) => {
   const [journal, setJournal] = useState([])
   const [form, setForm] = useState({})
 
+  const[user,setUser]= useState([])
+  const authUser = async () =>{
+      let response = await fetch('/users',{
+        method:'Get',
+        headers:{
+          Accept:"application/json",
+          "Content-Type":"application/json",
+        },
+        credentials:"include"
+       
+       })
 
+    const data = await response.json();
+    setUser(data);
+  }
   const hendeler = (e) => {
     console.log(e.target.name, e.target.value);
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -44,6 +59,12 @@ const Journal = (props) => {
     const journal = await response.json();
     setJournal(journal);
     console.log(journal);
+    if(response.status===200){
+      props.showAlert(`WELCOME ${user.name } `, "success");
+    }else{
+      navigate("/singin");
+      props.showAlert("Enter Correct credintial", "danger");
+    }
   }
   const deleteNote = async (id) => {
     const response = await fetch(`http://localhost:5000/staf/deljournals/${id}`, {
@@ -63,6 +84,7 @@ const Journal = (props) => {
   }
   useEffect(() => {
     itemseter();
+    authUser();
     console.log(journal);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

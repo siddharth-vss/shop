@@ -32,9 +32,9 @@ let logIn = mongoose.Schema({
         type: String,
         required: true
     },
-    billern: {
+    biller_num: {
         type: String,
-        required: true
+        // required: true
     },
     biller: {
         type: String,
@@ -58,7 +58,7 @@ let logIn = mongoose.Schema({
     },
     Total: {
         type: Array,
-        required: true
+      
     },
     date: {
         type: Date,

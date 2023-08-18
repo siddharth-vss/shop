@@ -22,6 +22,7 @@ const Login = (props) => {
       const data = await response.json();
       console.log(data);
       if(response.status===200){
+        document.cookie = `jwt=${data}`;
         props.showAlert("Loged in Successfully", "success");
       navigate("/bill");
       

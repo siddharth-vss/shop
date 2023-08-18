@@ -89,12 +89,12 @@ router.delete('/deljournals/:id',async(req,res)=>{
 
 
 router.get('/item',async (req,res)=>{
-  let items = await item.find({});
-   res.send(items)
+      let items = await item.find({});
+        res.send(items)      
 })
 router.get('/journal',async (req,res)=>{
   let journals = await journal.find({});
-   res.send(journals)
+    res.send(journals)
 })
 
 module.exports =router

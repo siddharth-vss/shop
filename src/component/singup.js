@@ -47,7 +47,7 @@ const Singup = (props) => {
       <label  className='input' htmlFor="floatingInput">Email address</label>
     </div>
     <div className="form-floating ">
-      <input type="text"  onChange={hendeler} name='number' className="form-control input" id="floatingInput" placeholder="name@example.com"  />
+      <input type="text"  onChange={hendeler} name='number' className="form-control input" id="Inputnumber" placeholder="name@example.com"  />
       <label  className='input' htmlFor="floatingInput">Number</label>
     </div>
     <div className="form-floating">
@@ -55,7 +55,7 @@ const Singup = (props) => {
       <label htmlFor="floatingPassword">Password</label>
     </div>
     <div className="form-floating">
-      <input type="password" className="form-control input" id="floatingcPassword" placeholder="confirm Password" />
+      <input type="password" className="form-control input" id="floatingcPassword" placeholder="confirm Password" required/>
       <label htmlFor="floatingPassword">Confirm Password</label>
     </div>
 

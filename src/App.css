@@ -3,6 +3,10 @@
     height: 27px;
     width: 40px;
 }
+.dor{
+    border-bottom: #000000;
+    border-top: #000000;
+}
 #SP{
     /* width: 35px;
     height: 35px;
@@ -164,4 +168,7 @@ font-weight: 600;
 }
 .close:hover{
     opacity: 1;
+}
+.top{
+    position: relative !important;
 }

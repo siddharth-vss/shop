@@ -8,6 +8,11 @@ mongoose.connect("mongodb+srv://sparrow:2056King*@cluster0.rxzfnrt.mongodb.net/s
 
 
 let Try = mongoose.Schema({
+
+    id:{
+        type: String,
+        required: true
+    },
     Title: {
         type: String,
         required: true

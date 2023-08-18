@@ -47,12 +47,34 @@ const Bill = (props) => {
 
  const[form,setForm]= useState({})
  const[stock,setStock]= useState([])
- const[user,setUser]= useState([])
+ 
+ const hendeler = (e) =>{
+   console.log(e.target.name,e.target.value);
+   setForm({...form,[e.target.name]: e.target.value})
+   
+  }
+  const[user,setUser]= useState([])
 
-  const hendeler = (e) =>{
-     console.log(e.target.name,e.target.value);
-     setForm({...form,[e.target.name]: e.target.value})
+  const authUser = async () =>{
+      let response = await fetch('/users',{
+        method:'Get',
+        headers:{
+          Accept:"application/json",
+          "Content-Type":"application/json",
+        },
+        credentials:"include"
+       
+       })
 
+    const data = await response.json();
+    setUser(data);
+    console.log(user)
+    if(response.status===200){
+      props.showAlert(`WELCOME ${user.name} `, "success");
+    }else{
+      navigate("/singin");
+      props.showAlert("Enter Correct credintial", "danger");
+    }
   }
   
   const FormHandeler =async (e) =>{
@@ -63,6 +85,8 @@ const Bill = (props) => {
       headers:{
         'Content-Type':'application/json'
     }})
+
+
     const data = await response.json();
     console.log(data);
     if(response.status===200){
@@ -81,20 +105,13 @@ const Bill = (props) => {
     const Stock = await response.json();
     setStock(Stock);
     console.log(Stock);
+
   }
-  const userseter =async () =>{
-    
-    const response = await fetch('http://localhost:5000/users',{
-      method:'Get'
-    })
-    const Stock = await response.json();
-    setUser(Stock);
-    console.log(Stock);
-  }
+
   useEffect( ()=>{
     itemseter();
-    userseter();
-    console.log(stock);
+    authUser();
+   
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
@@ -135,7 +152,7 @@ const Bill = (props) => {
     <label htmlFor="inputState" className="form-label">State</label>
     
     <select  className="form-select select" name="State" onChange={hendeler} >
-        <option  >select states</option>{States.map((e,index) => {
+       {States.map((e,index) => {
                 return <option  defaultValue={e.value} key={index}>{e.name}</option>
               })}</select>
    
@@ -147,14 +164,14 @@ const Bill = (props) => {
   
   <div className="col-md-6">
     <label htmlFor="inputZip" className="form-label">biller</label>
-    <select  className="form-select select" name="Payment" onChange={hendeler} >
-        <option  >select User</option>{user.map((e,index) => {
-                return <option defaultValue={e.name} key={index}>{e.name}</option>
-              })}</select>
+    <select  className="form-select select" name="biller" onChange={hendeler} >
+        
+              <option defaultValue={user.name} key={user._id}>{user.name}</option>
+              </select>
   </div>
   <div className="col-md-6">
     <label htmlFor="inputZip" className="form-label">biller Rnumber</label>
-    <input  onChange={hendeler} type="password" className="form-control" id="inputrnum" name="billernum" required/>
+    <input  onChange={hendeler} defaultValue={user.number} type="text" className="form-control" id="inputrnum" name="billernum" />
   </div>
   <div className="col-md-6">
     <label htmlFor="inputZip" className="form-label">Payment-method</label>

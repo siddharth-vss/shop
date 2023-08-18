@@ -14,6 +14,7 @@ const Data = (props) => {
     const data = await response.json();
     setData(data);
     console.log(data);
+    
   }
   useEffect( ()=>{
     itemseter();
@@ -39,7 +40,7 @@ const Data = (props) => {
         State={cus.State}
         quantity={cus.quantity}
         Price={cus.Price}
-        Total={cus.Total}
+        Total={cus.Price * cus.quantity}
         date={cus.date}
         
         
