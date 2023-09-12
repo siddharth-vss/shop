@@ -171,7 +171,7 @@ const Bill = (props) => {
   </div>
   <div className="col-md-6">
     <label htmlFor="inputZip" className="form-label">biller Rnumber</label>
-    <input  onChange={hendeler} defaultValue={user.number} type="text" className="form-control" id="inputrnum" name="billernum" />
+    <input  onChange={hendeler} defaultValue={user.mono} type="text" className="form-control" id="inputrnum" name="billernum" />
   </div>
   <div className="col-md-6">
     <label htmlFor="inputZip" className="form-label">Payment-method</label>

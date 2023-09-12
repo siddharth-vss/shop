@@ -1,3 +1,6 @@
+body{
+  background-color: hwb(180 92% 7%);
+}
 #SPlog{
   width: 100px;
   height: 100px;
@@ -10,7 +13,7 @@
    width: 100vw;
  height: 91.5vh;
  /* top: -100px !important; */
-background-color: rgb(0, 183, 255);
+background-color: hsl(197, 100%, 50%);
 }
 .nav{
   padding: 64px;
@@ -117,3 +120,44 @@ button, input, select, textarea, optgroup {
   width: 100vw;
   height: 100vh;
 }
+
+.btw{
+  width: 50px !important; 
+}
+
+.cpass{
+  border: transparent;
+background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 30px;
+  width: 30px;
+  position: relative;
+  margin-right: -20px;
+  margin-top: 13px;
+  }
+.pass{
+  border: transparent;
+  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 30px;
+  width: 30px;
+  position: relative;
+  margin-right: -20px;
+  margin-top: 13px;
+}
+
+
+
+
+
+
+input[type = "checkbox"]:checked{
+  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
+}
+

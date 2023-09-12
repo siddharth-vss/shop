@@ -39,6 +39,7 @@ router.post('/singup', [
       name: req.body.name,
       password: req.body.password,
       email: req.body.email,
+      mono:req.body.number
     });
 
 

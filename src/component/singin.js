@@ -11,6 +11,16 @@ const Login = (props) => {
     setForm({...form,[e.target.name]: e.target.value})
     
   }
+  const pass = document.querySelector('#password');
+  const show = () => {
+     if(pass.getAttribute("type")==="password"){
+          pass.setAttribute("type","text");
+          
+     }else{
+      pass.setAttribute("type",'password');
+     
+     }
+  }
   const FormHandeler =async (e) =>{
     e.preventDefault();
     const response = await fetch('http://localhost:5000/singin',{
@@ -41,13 +51,14 @@ const Login = (props) => {
     <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
     </div>
 
-    <div className="form-floating ">
+    <div className="form-floating my-3 ">
       <input type="email" className="form-control input" id="floatingInput" onChange={hendeler} placeholder="name@example.com" name='email'/>
       <label  className='input' htmlFor="floatingInput">Email address</label>
     </div>
-    <div className="form-floating">
-      <input type="password" className="form-control input" id="floatingPassword" onChange={hendeler} placeholder="password" name='password'/>
+    <div className="form-floating d-flex my-3">
+      <input type="password" onChange={hendeler} name='password' className="form-control input" id="password" placeholder="Password" />
       <label htmlFor="floatingPassword">Password</label>
+      <input type='checkbox' className="pass" onClick={show}  />
     </div>
 
     <div className="form-check text-center my-1">
