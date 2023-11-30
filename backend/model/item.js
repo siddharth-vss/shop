@@ -1,9 +1,9 @@
-// let express = require('express');
+let dotenv = require('dotenv');
 let mongoose = require('mongoose');
 
+dotenv.config()
 
-
-mongoose.connect("mongodb+srv://sparrow:2056King*@cluster0.rxzfnrt.mongodb.net/sparrow?retryWrites=true&w=majority");
+mongoose.connect(process.env.DB);
 
 
 let master = mongoose.Schema({
@@ -18,7 +18,7 @@ let master = mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },timestamps: true
 })
 
 let Punji = mongoose.model('item',master);

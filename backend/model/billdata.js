@@ -1,10 +1,10 @@
-// let express = require('express');
+let dotenv = require('dotenv');
 let mongoose = require('mongoose');
 
 
+dotenv.config()
 
-mongoose.connect("mongodb+srv://sparrow:2056King*@cluster0.rxzfnrt.mongodb.net/sparrow?retryWrites=true&w=majority");
-
+mongoose.connect(process.env.DB);
 
 
 let logIn = mongoose.Schema({
@@ -13,7 +13,7 @@ let logIn = mongoose.Schema({
         required: true
     },
     mobile_number: {
-        type: String,
+        type: Number,
         required: true
     },
     address: {
@@ -29,11 +29,11 @@ let logIn = mongoose.Schema({
         required: true
     },
     Zip: {
-        type: String,
+        type: Number,
         required: true
     },
     biller_num: {
-        type: String,
+        type: Number,
         // required: true
     },
     biller: {
@@ -63,8 +63,10 @@ let logIn = mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    }
-})
+    },
+     timestamps: true, })
+
+
 
 let Shop = mongoose.model('customer',logIn);
 

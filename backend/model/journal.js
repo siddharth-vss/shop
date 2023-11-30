@@ -1,18 +1,17 @@
-// let express = require('express');
+let dotenv = require('dotenv');
 let mongoose = require('mongoose');
 
 
 
 
-mongoose.connect("mongodb+srv://sparrow:2056King*@cluster0.rxzfnrt.mongodb.net/sparrow?retryWrites=true&w=majority");
+dotenv.config()
+
+mongoose.connect(process.env.DB);
 
 
 let Try = mongoose.Schema({
 
-    id:{
-        type: String,
-        required: true
-    },
+    
     Title: {
         type: String,
         required: true
@@ -24,7 +23,7 @@ let Try = mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },timestamps: true,
 })
 
 
